@@ -1,0 +1,10 @@
+---DESCRIPTION---
+Must use UTF-8 without BOM
+---ENCODING---
+UTF-8 (BE)
+---CONTENTS---
+<?php
+
+---MESSAGES---
+1:1 Generic.Files.ByteOrderMark.Found
+---

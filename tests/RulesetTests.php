@@ -15,7 +15,10 @@ use function array_filter;
 use function array_map;
 use function explode;
 use function Functional\flatten;
+use function Functional\select_keys;
+use function implode;
 use function ini_get;
+use function mb_convert_encoding;
 use function preg_match_all;
 use function sort;
 use function strpos;
@@ -24,6 +27,8 @@ use const TOKEN_PARSE;
 
 final class RulesetTests extends TestCase
 {
+    private const UTF8_BOM = "\xEF\xBB\xBF";
+
     /** @var Runner */
     private static $codeSniffer;
 
@@ -43,7 +48,8 @@ final class RulesetTests extends TestCase
         string $contents,
         string $fixed,
         array $messages,
-        ?string $description
+        ?string $description,
+        ?string $fixedEncoding
     ) : void {
         $file = $this->createFile($filename, $contents);
         $actual = flatten($this->getMessages($file));
@@ -52,6 +58,9 @@ final class RulesetTests extends TestCase
         sort($messages);
 
         $this->assertSame($messages, $actual, $description);
+        if ($fixedEncoding) {
+            $this->assertSame($fixedEncoding, mb_detect_encoding($file->fixer->getContents(), 'UTF-8', true));
+        }
         $this->assertSame($fixed, $file->fixer->getContents());
     }
 
@@ -60,7 +69,7 @@ final class RulesetTests extends TestCase
         $files = Finder::create()->files()->in(__DIR__.'/cases');
 
         foreach ($files as $file) {
-            preg_match_all('~(?:---)?([A-Z]+)---\s+([\s\S]+?)\n---~', $file->getContents(), $matches);
+            preg_match_all('~(?:---)?([A-Z-]+?)---\s+([\s\S]+?)\n---~', $file->getContents(), $matches);
 
             $parts = array_combine(array_map('strtolower', $matches[1]), $matches[2]);
 
@@ -70,8 +79,8 @@ final class RulesetTests extends TestCase
 
             if (empty($parts['contents'])) {
                 throw new LogicException("Couldn't find contents in {$file->getRelativePathname()}");
-            } elseif (empty($parts['fixed']) && empty($parts['messages'])) {
-                throw new LogicException("Expected one of fixed or messages in {$file->getRelativePathname()}");
+            } elseif (empty(select_keys($parts, $keys = ['fixed', 'fixed-encoding', 'messages']))) {
+                throw new LogicException("Expected one of ".implode(', ', $keys)." in {$file->getRelativePathname()}");
             }
 
             try {
@@ -90,12 +99,23 @@ final class RulesetTests extends TestCase
                 }
             }
 
+            switch ($parts['encoding'] ?? 'UTF-8') {
+                case 'UTF-8 (BE)':
+                    $parts['contents'] = self::UTF8_BOM.$parts['contents'];
+                    break;
+                case 'UTF-8':
+                    break;
+                default:
+                    $parts['contents'] = mb_convert_encoding($parts['contents'], $parts['encoding']);
+            }
+
             yield $file->getRelativePathname() => [
                 $parts['filename'] ?? 'test.php',
                 $parts['contents'],
                 $parts['fixed'] ?? $parts['contents'],
                 $parts['messages'] ?? [],
                 $parts['description'] ?? null,
+                $parts['fixed-encoding'] ?? null,
             ];
         }
     }
