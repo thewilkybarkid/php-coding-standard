@@ -1,0 +1,17 @@
+---DESCRIPTION---
+Interface constants must be in all upper case
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+interface Foo
+{
+    const foo = 'bar';
+}
+
+---MESSAGES---
+7:11 Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
+---

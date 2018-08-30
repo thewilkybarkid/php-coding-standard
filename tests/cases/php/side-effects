@@ -1,0 +1,14 @@
+---DESCRIPTION---
+A file must either declare symbols or execute logic, not both
+---CONTENTS---
+<?php
+
+foo();
+
+function foo() : void
+{
+}
+
+---MESSAGES---
+1:1 PSR1.Files.SideEffects.FoundWithSymbols
+---

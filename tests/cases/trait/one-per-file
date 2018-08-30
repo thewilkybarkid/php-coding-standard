@@ -1,0 +1,20 @@
+---DESCRIPTION---
+File must only contain one trait
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+}
+
+trait Bar
+{
+}
+
+---MESSAGES---
+9:1 PSR1.Classes.ClassDeclaration.MultipleClasses
+---

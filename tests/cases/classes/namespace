@@ -1,0 +1,14 @@
+---DESCRIPTION---
+Classes must be in a namespace
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+class Foo
+{
+}
+
+---MESSAGES---
+3:1 PSR1.Classes.ClassDeclaration.MissingNamespace
+---

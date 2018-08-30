@@ -1,0 +1,16 @@
+---DESCRIPTION---
+Filename must match interface name
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+interface Bar
+{
+}
+
+---MESSAGES---
+5:1 Squiz.Classes.ClassFileName.NoMatch
+---

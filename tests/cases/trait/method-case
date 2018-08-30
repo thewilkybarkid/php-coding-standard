@@ -1,0 +1,19 @@
+---DESCRIPTION---
+Method names must be in camel case
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+    public function bar_baz() : void
+    {
+    }
+}
+
+---MESSAGES---
+7:12 PSR1.Methods.CamelCapsMethodName.NotCamelCaps
+---

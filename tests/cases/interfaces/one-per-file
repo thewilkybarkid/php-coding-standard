@@ -1,0 +1,21 @@
+---DESCRIPTION---
+File must only contain one interface
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+interface Foo
+{
+}
+
+interface Bar
+{
+}
+
+---MESSAGES---
+9:1 PSR1.Classes.ClassDeclaration.MultipleClasses
+9:1 Squiz.Classes.ClassFileName.NoMatch
+---

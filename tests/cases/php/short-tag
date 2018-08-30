@@ -1,0 +1,13 @@
+---DESCRIPTION---
+PHP short tags are not allowed
+---CONTENTS---
+<?
+
+$foo = 'bar';
+
+---FIXED---
+<?php
+
+$foo = 'bar';
+
+---

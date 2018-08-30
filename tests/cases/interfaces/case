@@ -1,0 +1,16 @@
+---DESCRIPTION---
+Interface name must be in camel case
+---FILENAME---
+foobar.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+interface foobar
+{
+}
+
+---MESSAGES---
+5:1 Squiz.Classes.ValidClassName.NotCamelCaps
+---

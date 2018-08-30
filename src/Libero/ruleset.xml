@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<ruleset name="Libero" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+    xsi:noNamespaceSchemaLocation="../../vendor/squizlabs/php_codesniffer/phpcs.xsd">
+
+    <description>The Libero coding standard.</description>
+
+    <rule ref="PSR1"/>
+
+    <rule ref="Squiz.Classes.ClassFileName"/>
+
+</ruleset>

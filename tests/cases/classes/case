@@ -1,0 +1,16 @@
+---DESCRIPTION---
+Class name must be in camel case
+---FILENAME---
+foobar.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+class foobar
+{
+}
+
+---MESSAGES---
+5:1 Squiz.Classes.ValidClassName.NotCamelCaps
+---

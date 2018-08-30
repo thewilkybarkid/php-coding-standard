@@ -1,0 +1,14 @@
+---DESCRIPTION---
+Interfaces must be in a namespace
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+interface Foo
+{
+}
+
+---MESSAGES---
+3:1 PSR1.Classes.ClassDeclaration.MissingNamespace
+---

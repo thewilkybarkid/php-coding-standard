@@ -1,0 +1,42 @@
+sudo: false
+
+language: php
+
+php:
+    - 7.2
+    - nightly
+
+before_install:
+    - phpenv config-rm xdebug.ini || true
+    - phpenv config-add .travis/php.ini
+
+install:
+    - travis_retry composer install --classmap-authoritative --no-suggest --prefer-dist
+
+script:
+    - vendor/bin/phpunit
+
+jobs:
+    include:
+
+        - stage: Test
+          env: DEPENDENCIES=low
+          php: 7.2
+          install:
+              - travis_retry composer update --classmap-authoritative --no-suggest  --prefer-dist --prefer-lowest --prefer-stable
+
+        - stage: Code Quality
+          env: CODING_STANDARDS
+          script:
+              - vendor/bin/phpcs -p
+
+allow_failures:
+    - php: nightly
+
+cache:
+    directories:
+        - $HOME/.composer/cache/files
+
+branches:
+    only:
+        - master
