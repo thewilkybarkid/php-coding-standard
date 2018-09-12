@@ -1,0 +1,33 @@
+---DESCRIPTION---
+Method modifiers must come in the order: final/abstract, visibility, static.
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+abstract class Foo
+{
+    protected abstract function bar() : void;
+
+    static public final function baz() : void
+    {
+    }
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+abstract class Foo
+{
+    abstract protected function bar() : void;
+
+    final public static function baz() : void
+    {
+    }
+}
+
+---

@@ -1,0 +1,13 @@
+---DESCRIPTION---
+Default values must go at the end
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+$foo = function ($bar = [], $baz) : void {
+};
+
+---MESSAGES---
+5:29 PEAR.Functions.ValidDefaultValue.NotAtEnd
+---

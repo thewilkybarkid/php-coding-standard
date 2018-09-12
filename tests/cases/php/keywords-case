@@ -1,0 +1,29 @@
+---DESCRIPTION---
+PHP keywords must be in lower case
+---CONTENTS---
+<?php
+
+TRY {
+    FOR ($i = 1; $i <= 10; $i++) {
+        ECHO $i;
+    }
+} FINALLY {
+    RETURN;
+}
+
+DIE;
+
+---FIXED---
+<?php
+
+try {
+    for ($i = 1; $i <= 10; $i++) {
+        echo $i;
+    }
+} finally {
+    return;
+}
+
+die;
+
+---

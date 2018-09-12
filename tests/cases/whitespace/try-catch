@@ -1,0 +1,29 @@
+---DESCRIPTION---
+Try-catch statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+try{
+
+    $foo = 'bar';
+}catch ( FirstExceptionType $e ) {
+    $foo = 'bar';
+
+} catch(
+OtherExceptionType $e) { $foo = 'bar'; } finally {
+    $foo = 'bar';}
+
+---FIXED---
+<?php
+
+try {
+    $foo = 'bar';
+} catch (FirstExceptionType $e) {
+    $foo = 'bar';
+} catch (OtherExceptionType $e) {
+    $foo = 'bar';
+} finally {
+    $foo = 'bar';
+}
+
+---

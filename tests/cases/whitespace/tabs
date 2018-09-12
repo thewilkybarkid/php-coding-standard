@@ -1,0 +1,23 @@
+---DESCRIPTION---
+Must use spaces not tabs
+---CONTENTS---
+<?php
+
+function foo(array $bar) : iterable
+{
+	foreach ($bar as $baz) {
+		yield $baz;
+	}
+}
+
+---FIXED---
+<?php
+
+function foo(array $bar) : iterable
+{
+    foreach ($bar as $baz) {
+        yield $baz;
+    }
+}
+
+---

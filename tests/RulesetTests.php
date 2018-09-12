@@ -20,7 +20,9 @@ use function implode;
 use function ini_get;
 use function mb_convert_encoding;
 use function preg_match_all;
+use function preg_replace;
 use function sort;
+use function str_replace;
 use function strpos;
 use function token_get_all;
 use const TOKEN_PARSE;
@@ -73,13 +75,16 @@ final class RulesetTests extends TestCase
 
             $parts = array_combine(array_map('strtolower', $matches[1]), $matches[2]);
 
+            $parts['filename'] = $parts['filename'] ?? 'test.php';
+
             if (isset($parts['messages'])) {
                 $parts['messages'] = array_filter(explode("\n", $parts['messages']));
             }
 
+            $keys = ['fixed', 'fixed-encoding', 'fixed-line-endings', 'messages'];
             if (empty($parts['contents'])) {
                 throw new LogicException("Couldn't find contents in {$file->getRelativePathname()}");
-            } elseif (empty(select_keys($parts, $keys = ['fixed', 'fixed-encoding', 'messages']))) {
+            } elseif (empty(select_keys($parts, $keys))) {
                 throw new LogicException("Expected one of ".implode(', ', $keys)." in {$file->getRelativePathname()}");
             }
 
@@ -88,6 +93,11 @@ final class RulesetTests extends TestCase
             } catch (ParseError $exception) {
                 $message = "Failed to parse content in {$file->getRelativePathname()}: {$exception->getMessage()}";
                 throw new LogicException($message, 0, $exception);
+            }
+
+            if (!empty($parts['line-endings'])) {
+                $parts['line-endings'] = str_replace(['\n', '\r'], ["\n", "\r"], $parts['line-endings']);
+                $parts['contents'] = preg_replace('~\R~', $parts['line-endings'], $parts['contents']);
             }
 
             if (!empty($parts['fixed'])) {
@@ -109,10 +119,17 @@ final class RulesetTests extends TestCase
                     $parts['contents'] = mb_convert_encoding($parts['contents'], $parts['encoding']);
             }
 
+            $parts['fixed'] = $parts['fixed'] ?? $parts['contents'];
+
+            if (!empty($parts['fixed-line-endings'])) {
+                $parts['fixed-line-endings'] = str_replace(['\n', '\r'], ["\n", "\r"], $parts['fixed-line-endings']);
+                $parts['fixed'] = preg_replace('~\R~', $parts['fixed-line-endings'], $parts['fixed']);
+            }
+
             yield $file->getRelativePathname() => [
-                $parts['filename'] ?? 'test.php',
+                "{$file->getRelativePathname()}/{$parts['filename']}",
                 $parts['contents'],
-                $parts['fixed'] ?? $parts['contents'],
+                $parts['fixed'],
                 $parts['messages'] ?? [],
                 $parts['description'] ?? null,
                 $parts['fixed-encoding'] ?? null,
@@ -127,7 +144,7 @@ final class RulesetTests extends TestCase
         }
 
         $file = new DummyFile(
-            "phpcs_input_file:${filename}\n{$content}",
+            "phpcs_input_file:before/${filename}\n{$content}",
             self::$codeSniffer->ruleset,
             self::$codeSniffer->config
         );
@@ -137,7 +154,7 @@ final class RulesetTests extends TestCase
         $file->fixer->fixFile();
 
         $file = new DummyFile(
-            "phpcs_input_file:${filename}\n{$file->fixer->getContents()}",
+            "phpcs_input_file:after/${filename}\n{$file->fixer->getContents()}",
             self::$codeSniffer->ruleset,
             self::$codeSniffer->config
         );

@@ -1,0 +1,19 @@
+---DESCRIPTION---
+Closure braces must be on separate lines.
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+$foo = function () : void { $baz = 'qux'; };
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+$foo = function () : void {
+    $baz = 'qux';
+};
+
+---

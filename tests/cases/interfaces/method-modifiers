@@ -1,0 +1,25 @@
+---DESCRIPTION---
+Method modifiers must come in the order: visibility, static.
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+interface Foo
+{
+    static public function bar() : void;
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+interface Foo
+{
+    public static function bar() : void;
+}
+
+---

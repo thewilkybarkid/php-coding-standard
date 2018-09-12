@@ -1,0 +1,18 @@
+---DESCRIPTION---
+Switch cases must have a comment if they do not have a break
+---CONTENTS---
+<?php
+
+switch ($expr) {
+    case 0:
+        echo 'foo';
+    case 1:
+        echo 'bar';
+        // no break
+    default:
+        echo 'baz';
+}
+
+---MESSAGES---
+4:5 PSR2.ControlStructures.SwitchDeclaration.TerminatingComment
+---

@@ -1,0 +1,20 @@
+---DESCRIPTION---
+Braces must be used
+---CONTENTS---
+<?php
+
+if (true)
+    return 'foo';
+
+return 'bar';
+
+---FIXED---
+<?php
+
+if (true) {
+    return 'foo';
+}
+
+return 'bar';
+
+---

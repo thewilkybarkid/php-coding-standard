@@ -1,0 +1,30 @@
+---DESCRIPTION---
+Methods must not have unnecessary whitespace
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+class Foo
+{
+    public function bar  ( $baz  ,&$qux,  bool$quux, ? string  $quuz    =null   ,  string...$corge   ):
+    void
+    {
+    }
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+class Foo
+{
+    public function bar($baz, &$qux, bool $quux, ?string $quuz = null, string ...$corge) : void
+    {
+    }
+}
+
+---

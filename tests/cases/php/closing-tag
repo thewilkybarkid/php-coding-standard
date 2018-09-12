@@ -1,0 +1,15 @@
+---DESCRIPTION---
+No closing PHP tags at the end of files
+---CONTENTS---
+<?php
+
+$foo = 'bar';
+
+?>
+
+---FIXED---
+<?php
+
+$foo = 'bar';
+
+---

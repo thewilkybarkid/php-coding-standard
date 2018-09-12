@@ -1,0 +1,23 @@
+---DESCRIPTION---
+Use statements must not begin with a backslash
+---CONTENTS---
+<?php
+namespace Vendor;
+
+use \Foo;
+use const \BAR;
+use function \baz;
+
+new Foo(baz(BAR));
+
+---FIXED---
+<?php
+namespace Vendor;
+
+use Foo;
+use const BAR;
+use function baz;
+
+new Foo(baz(BAR));
+
+---

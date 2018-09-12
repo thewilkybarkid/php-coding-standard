@@ -1,0 +1,14 @@
+---DESCRIPTION---
+One statement per line
+---CONTENTS---
+<?php
+
+$foo = 'bar'; $baz = 'qux';
+
+---FIXED---
+<?php
+
+$foo = 'bar';
+$baz = 'qux';
+
+---

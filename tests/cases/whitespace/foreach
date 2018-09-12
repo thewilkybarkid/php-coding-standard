@@ -1,0 +1,20 @@
+---DESCRIPTION---
+Foreach statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+foreach(
+$iterable as  $key=>
+$value )
+{
+
+$foo = 'bar'; }
+
+---FIXED---
+<?php
+
+foreach ($iterable as $key => $value) {
+    $foo = 'bar';
+}
+
+---

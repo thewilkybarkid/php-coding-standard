@@ -1,0 +1,24 @@
+---DESCRIPTION---
+One use statement per declaration
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+use Foo, Bar;
+
+new Foo();
+new Bar();
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+use Foo;
+use Bar;
+
+new Foo();
+new Bar();
+
+---

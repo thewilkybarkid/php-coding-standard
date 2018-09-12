@@ -1,0 +1,19 @@
+---DESCRIPTION---
+Methods must have visibility declared
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+    function bar() : void
+    {
+    }
+}
+
+---MESSAGES---
+7:5 Squiz.Scope.MethodScope.Missing
+---

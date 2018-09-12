@@ -1,0 +1,19 @@
+---DESCRIPTION---
+Default values must go at the end
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+    public function bar($baz = [], $qux) : void
+    {
+    }
+}
+
+---MESSAGES---
+7:36 PEAR.Functions.ValidDefaultValue.NotAtEnd
+---

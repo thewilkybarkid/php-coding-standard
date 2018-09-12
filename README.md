@@ -3,7 +3,7 @@ Libero PHP coding standard
 
 [![Build Status](https://travis-ci.com/libero/php-coding-standard.svg?branch=master)](https://travis-ci.com/libero/php-coding-standard)
 
-The Libero PHP coding standard is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules applied to all Libero PHP projects. It is based on [PSR-1](https://www.php-fig.org/psr/psr-1/).
+The Libero PHP coding standard is a set of [PHP_CodeSniffer](https://github.com/squizlabs/PHP_CodeSniffer) rules applied to all Libero PHP projects. It is based on [PSR-2](https://www.php-fig.org/psr/psr-2/).
 
 Getting started
 ---------------

@@ -1,0 +1,21 @@
+---DESCRIPTION---
+Do-while statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+do
+{
+
+    $foo = 'bar';
+
+}  while(
+$expr );
+
+---FIXED---
+<?php
+
+do {
+    $foo = 'bar';
+} while ($expr);
+
+---

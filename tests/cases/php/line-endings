@@ -1,0 +1,10 @@
+---DESCRIPTION---
+Must use Unix LF (linefeed) line endings
+---LINE-ENDINGS---
+\r\n
+---CONTENTS---
+<?php
+
+---FIXED-LINE-ENDINGS---
+\n
+---

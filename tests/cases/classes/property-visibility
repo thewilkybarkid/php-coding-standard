@@ -1,0 +1,18 @@
+---DESCRIPTION---
+Class properties must have visibility declared
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+class Foo
+{
+    var $bar;
+}
+
+---MESSAGES---
+7:9 PSR2.Classes.PropertyDeclaration.ScopeMissing
+7:9 PSR2.Classes.PropertyDeclaration.VarUsed
+---

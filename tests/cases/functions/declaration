@@ -1,0 +1,36 @@
+---DESCRIPTION---
+Functions must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+function foo  ( $bar  ,&$baz,  bool$qux, ? string  $quux    =null   ,  string...$quuz   ):
+void
+{
+}
+
+function corge
+( $grault  ,$garply,
+      bool$waldo, ? string  $fred    =null   ):void
+{
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+function foo($bar, &$baz, bool $qux, ?string $quux = null, string ...$quuz) : void
+{
+}
+
+function corge(
+    $grault,
+    $garply,
+    bool $waldo,
+    ?string $fred = null
+) : void {
+}
+
+---

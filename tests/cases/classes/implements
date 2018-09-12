@@ -1,0 +1,24 @@
+---DESCRIPTION---
+Implements keyword must be on the same line as the class name
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+class Foo
+implements Bar
+{
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+class Foo implements Bar
+{
+}
+
+---

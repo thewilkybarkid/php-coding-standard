@@ -1,0 +1,22 @@
+---DESCRIPTION---
+Static method calls must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+$foo :: bar ( $arg1 );
+
+$foo
+:: bar ($arg1
+,$arg2);
+
+---FIXED---
+<?php
+
+$foo::bar($arg1);
+
+$foo::bar(
+    $arg1,
+    $arg2
+);
+
+---

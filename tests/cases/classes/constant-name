@@ -9,9 +9,9 @@ namespace Vendor;
 
 class Foo
 {
-    const foo = 'bar';
+    public const bar = 'baz';
 }
 
 ---MESSAGES---
-7:11 Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
+7:18 Generic.NamingConventions.UpperCaseConstantName.ClassConstantNotUpperCase
 ---

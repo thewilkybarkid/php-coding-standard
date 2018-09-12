@@ -1,0 +1,40 @@
+---DESCRIPTION---
+Switch statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+switch
+( $expr) {case 0:break;
+case 1:
+$foo = 'bar';
+break;
+    case 2:
+     case 3:
+      case 4: return;
+    default:
+
+        $foo = 'bar';
+
+        break;
+}
+
+---FIXED---
+<?php
+
+switch ($expr) {
+    case 0:
+        break;
+    case 1:
+        $foo = 'bar';
+        break;
+    case 2:
+    case 3:
+    case 4:
+        return;
+    default:
+        $foo = 'bar';
+
+        break;
+}
+
+---

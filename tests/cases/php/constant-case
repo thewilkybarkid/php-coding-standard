@@ -1,0 +1,17 @@
+---DESCRIPTION---
+PHP constants must be in lower case
+---CONTENTS---
+<?php
+
+$foo = TRUE;
+$bar = FALSE;
+$baz = NULL;
+
+---FIXED---
+<?php
+
+$foo = true;
+$bar = false;
+$baz = null;
+
+---

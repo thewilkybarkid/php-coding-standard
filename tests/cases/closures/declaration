@@ -1,0 +1,40 @@
+---DESCRIPTION---
+Closures must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+$foo = function   ( $bar  ,&$baz,  bool$qux, ? string  $quux    =null   ,  string...$quuz   )use  ( &$foo)   :
+void
+{
+};
+
+$corge = function
+( $grault  ,$garply,
+      bool$waldo, ? string  $fred    =null   )   use( $foo,&$corge
+)
+:void
+{
+};
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+$foo = function ($bar, &$baz, bool $qux, ?string $quux = null, string ...$quuz) use (&$foo) : void {
+};
+
+$corge = function (
+    $grault,
+    $garply,
+    bool $waldo,
+    ?string $fred = null
+) use (
+    $foo,
+    &$corge
+) : void {
+};
+
+---

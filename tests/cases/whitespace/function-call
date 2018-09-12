@@ -1,0 +1,22 @@
+---DESCRIPTION---
+Function calls must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+foo ( $arg1 );
+
+foo
+($arg1
+,$arg2);
+
+---FIXED---
+<?php
+
+foo($arg1);
+
+foo(
+    $arg1,
+    $arg2
+);
+
+---

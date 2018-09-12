@@ -1,0 +1,19 @@
+---DESCRIPTION---
+Method names must not begin with an underscore to indicate visibility
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+class Foo
+{
+    private function _bar() : void
+    {
+    }
+}
+
+---MESSAGES---
+7:13 PSR2.Methods.MethodDeclaration.Underscore
+---

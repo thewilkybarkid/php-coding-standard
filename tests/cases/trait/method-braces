@@ -1,0 +1,28 @@
+---DESCRIPTION---
+Method braces must be on separate lines.
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+    public function bar() : void { $baz = 'qux'; }
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+    public function bar() : void
+    {
+        $baz = 'qux';
+    }
+}
+
+---

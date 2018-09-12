@@ -1,0 +1,17 @@
+---DESCRIPTION---
+One property per declaration
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+trait Foo
+{
+    public $bar, $baz;
+}
+
+---MESSAGES---
+7:12 PSR2.Classes.PropertyDeclaration.Multiple
+---

@@ -1,0 +1,32 @@
+---DESCRIPTION---
+No spaces between use declarations
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+use Foo;
+
+
+use Bar;
+
+use const BAZ;
+
+
+use function qux;
+
+new Foo(new Bar(qux(BAZ)));
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+use Foo;
+use Bar;
+use const BAZ;
+use function qux;
+
+new Foo(new Bar(qux(BAZ)));
+
+---

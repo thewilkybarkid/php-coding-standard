@@ -1,0 +1,20 @@
+---DESCRIPTION---
+Blank line after use declarations
+---CONTENTS---
+<?php
+namespace Vendor;
+
+use Foo;
+
+
+new Foo();
+
+---FIXED---
+<?php
+namespace Vendor;
+
+use Foo;
+
+new Foo();
+
+---

@@ -1,0 +1,12 @@
+---DESCRIPTION---
+File must end with a blank line
+---CONTENTS---
+<?php
+
+$foo = 'bar';
+---FIXED---
+<?php
+
+$foo = 'bar';
+
+---

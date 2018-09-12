@@ -1,0 +1,20 @@
+---DESCRIPTION---
+For statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+for(
+$i =
+0;$i<10; $i++ )
+{
+
+    $foo = 'bar'; }
+
+---FIXED---
+<?php
+
+for ($i = 0; $i < 10; $i++) {
+    $foo = 'bar';
+}
+
+---

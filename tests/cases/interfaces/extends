@@ -1,0 +1,24 @@
+---DESCRIPTION---
+Extends keyword must be on the same line as the interface name
+---FILENAME---
+Foo.php
+---CONTENTS---
+<?php
+
+namespace Vendor;
+
+interface Foo
+extends Bar
+{
+}
+
+---FIXED---
+<?php
+
+namespace Vendor;
+
+interface Foo extends Bar
+{
+}
+
+---

@@ -1,0 +1,21 @@
+---DESCRIPTION---
+While statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+while(
+$expr )
+{
+
+    $foo = 'bar';
+
+}
+
+---FIXED---
+<?php
+
+while ($expr) {
+    $foo = 'bar';
+}
+
+---

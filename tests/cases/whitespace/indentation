@@ -1,0 +1,23 @@
+---DESCRIPTION---
+4 spaces must be used for indenting
+---CONTENTS---
+<?php
+
+function foo(array $bar) : iterable
+   {
+ foreach ($bar as $baz) {
+yield $baz;
+ }
+  }
+
+---FIXED---
+<?php
+
+function foo(array $bar) : iterable
+{
+    foreach ($bar as $baz) {
+        yield $baz;
+    }
+}
+
+---

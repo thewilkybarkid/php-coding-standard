@@ -1,0 +1,29 @@
+---DESCRIPTION---
+If statements must not have unnecessary whitespace
+---CONTENTS---
+<?php
+
+if  ( $expr1 ) { $foo = 'bar';
+} else if (
+$expr2) {
+
+    $foo = 'bar';
+}
+else
+{
+    $foo = 'bar';
+
+}
+
+---FIXED---
+<?php
+
+if ($expr1) {
+    $foo = 'bar';
+} elseif ($expr2) {
+    $foo = 'bar';
+} else {
+    $foo = 'bar';
+}
+
+---
