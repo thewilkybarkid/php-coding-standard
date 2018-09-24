@@ -10,6 +10,7 @@
         <exclude name="PSR2.Namespaces.UseDeclaration.SpaceAfterLastUse"/>
     </rule>
 
+    <rule ref="PEAR.WhiteSpace.ObjectOperatorIndent"/>
     <rule ref="SlevomatCodingStandard.Namespaces.UseDoesNotStartWithBackslash"/>
     <rule ref="SlevomatCodingStandard.Namespaces.UseSpacing"/>
     <rule ref="SlevomatCodingStandard.TypeHints.ParameterTypeHintSpacing"/>
@@ -21,10 +22,11 @@
     <rule ref="Squiz.Classes.ClassFileName"/>
     <rule ref="Squiz.WhiteSpace.ObjectOperatorSpacing">
         <properties>
-            <property name="ignoreNewlines" value="false"/>
+            <property name="ignoreNewlines" value="true"/>
         </properties>
     </rule>
     <rule ref="Squiz.WhiteSpace.OperatorSpacing"/>
+    <rule ref="Squiz.WhiteSpace.SemicolonSpacing"/>
     <rule ref="Squiz.WhiteSpace.SuperfluousWhitespace">
         <properties>
             <property name="ignoreBlankLines" value="false"/>

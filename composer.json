@@ -3,6 +3,11 @@
     "description": "Libero PHP coding standard",
     "type": "phpcodesniffer-standard",
     "license": "MIT",
+    "autoload": {
+        "psr-4": {
+            "Libero\\CodingStandard\\": "Libero/"
+        }
+    },
     "autoload-dev": {
         "psr-4": {
             "tests\\Libero\\CodingStandard\\": "tests/"
