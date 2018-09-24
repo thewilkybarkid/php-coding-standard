@@ -5,20 +5,26 @@ One use statement per declaration
 
 namespace Vendor;
 
-use Foo, Bar;
+use Bar, Foo;
+use function baz, qux;
+use const QUUX, QUUZ;
 
-new Foo();
-new Bar();
+new Foo(baz(QUUX));
+new Bar(qux(QUUZ));
 
 ---FIXED---
 <?php
 
 namespace Vendor;
 
-use Foo;
 use Bar;
+use Foo;
+use function baz;
+use function qux;
+use const QUUX;
+use const QUUZ;
 
-new Foo();
-new Bar();
+new Foo(baz(QUUX));
+new Bar(qux(QUUZ));
 
 ---
